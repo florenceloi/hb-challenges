@@ -183,7 +183,7 @@ def missing_number(nums, max_num):
 
     >>> missing_number([2, 1, 4, 3, 6, 5, 7, 10, 9], 10)
     8
-    
+
     """
 
     seen = [False] * max_num
@@ -192,7 +192,6 @@ def missing_number(nums, max_num):
         seen[num - 1] = True
 
     return seen.index(False) + 1
-
 
 
 def missing_number2(nums, max_num):
@@ -206,7 +205,7 @@ def missing_number2(nums, max_num):
 
     >>> missing_number2([2, 1, 4, 3, 6, 5, 7, 10, 9], 10)
     8
-    
+
     """
 
     nums.sort()
@@ -230,7 +229,7 @@ def missing_number3(nums, max_num):
 
     >>> missing_number3([2, 1, 4, 3, 6, 5, 7, 10, 9], 10)
     8
-    
+
     """
 
     expected_sum = (max_num + 1) * (max_num / 2)
@@ -252,7 +251,6 @@ def pig_latin(phrase):
 
     >>> pig_latin('give me an apple')
     'ivegay emay anyay appleyay'
-    
     """
 
     words = phrase.split(" ")
