@@ -635,3 +635,13 @@ def split(astring, splitter):
             break
 
     return out
+
+
+###############################################################################
+if __name__ == "__main__":
+    import doctest
+    print
+    result = doctest.testmod()
+    if not result.failed:
+        print "*** %s TESTS PASSED. GOOD WORK!" % result.attempted
+    print
