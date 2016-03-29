@@ -181,16 +181,52 @@ def dec2bin(num):
     '110'
     """
 
-    import math
+    out = []
+    place = 0
 
-    i = 0
-    # import pdb; pdb.set_trace()
-    while num >= 2:
-        num = num / 2
-        i += 1
+    # while loop just starting or dec num still larger than bin num
+    while place == 0 or num >= 2 ** place:
 
-    if num % 2 == 1:
-        return str(int(math.pow(10, i)))
+        # if non-zero mod when dividing by increasing power of 2
+        if num % 2 ** (place + 1):
+            num -= 2 ** place
+            out.append("1")
+
+        else:
+            out.append("0")
+
+        place += 1
+
+    return "".join(reversed(out))
+
+
+def dec2bin2(num):
+    """Convert a decimal number to binary representation.
+
+    >>> dec2bin2(4)
+    '100'
+
+    >>> dec2bin2(6)
+    '110'
+    """
+
+    out = ""
+
+    num_bits = 1
+
+    while 2 ** num_bits <= num:
+        num_bits += 1
+
+    for position in range(num_bits - 1, -1, -1):
+
+        if 2 ** position <= num:
+            num -= 2 ** position
+            out += "1"
+
+        else:
+            out += "0"
+
+    return out
 
 
 # ###############################################################################
