@@ -171,16 +171,26 @@ def calc(s):
 #         """
 
 # ###############################################################################
-# def dec2bin(num):
-#     """Convert a decimal number to binary representation.
+def dec2bin(num):
+    """Convert a decimal number to binary representation.
 
-#     >>> dec2bin(6)
-#     '110'
-#     """
+    >>> dec2bin(4)
+    '100'
 
-#     two_to_nth_power = num / 2
+    >>> dec2bin(6)
+    '110'
+    """
 
-#     out = 10 ^ two_to_nth_power
+    import math
+
+    i = 0
+    # import pdb; pdb.set_trace()
+    while num >= 2:
+        num = num / 2
+        i += 1
+
+    if num % 2 == 1:
+        return str(int(math.pow(10, i)))
 
 
 # ###############################################################################
@@ -362,15 +372,26 @@ class Node(object):
         return first
 
 
-# def find_survivor(num_people, kill_every):
-#     """Given num_people in circle, kill [kill_every]th person, return survivor.
+def find_survivor(num_people, kill_every):
+    """Given num_people in circle, kill [kill_every]th person, return survivor.
 
-#         >>> find_survivor(10, 3)
-#         4
-#     """
+        >>> find_survivor(10, 3)
+        4
+    """
 
-#     while num_people > 0:
-#         new_node = Node(num_people)
+    node = Node.make_list(num_people)
+
+    while node.next != node:
+
+        for i in range(kill_every - 1):
+            node = node.next
+
+        node.prev.next = node.next
+        node.next.prev = node.prev
+
+        node = node.next
+
+    return node.data
 
 
 # ###############################################################################
